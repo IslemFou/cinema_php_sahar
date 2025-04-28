@@ -6,6 +6,9 @@ require_once "../inc/header.inc.php";
  $id_user = $_SESSION['client']['id_user'];
  $price = $_GET['total'];
  $dateAchat = date('Y-m-d H:i:s');
+
+//------------- Adding order -----------------------------
+
  $result = addOrder($id_user, $price, $dateAchat, 1);
 
  $orderId = lastId();
@@ -14,8 +17,11 @@ require_once "../inc/header.inc.php";
  
     foreach($_SESSION['panier'] as $value){
 
+      //---------------- adding order details -----------------------------
+
       addOrderDetails($orderId['lastId'], $value['id_film'],$value['price'], $value['quantity']);
-      debug($_SESSION['panier']);
+      
+      // debug($_SESSION['panier']);
       die;
 
     }

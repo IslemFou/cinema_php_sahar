@@ -528,6 +528,7 @@ function deleteFilm(int $id) : void {
 
 }
 
+//---------------------- showfilm ID -----------------------------------------------------
 
 function showFilmViaId(int $id) :mixed{
     
@@ -542,6 +543,8 @@ function showFilmViaId(int $id) :mixed{
 
 } 
 
+
+//--------------------- Update film -----------------------------------------------
 function updateFilm(string $title, string $director, string $actors, string $ageLimit, string $duration, string $synopsis, string $date, float $price, int $stock, string $image, int $id_category, int $id_film ) : void {
 
     $cnx = connexionBdd();
@@ -590,6 +593,7 @@ function updateFilm(string $title, string $director, string $actors, string $age
 
 }
 
+//----------------------------------------------------------------
 
 function filmByDate() : mixed{
 
@@ -601,6 +605,7 @@ function filmByDate() : mixed{
 
 }
 
+//--------------------------------------------------------
 function filmsByCategory($id) :mixed{
 
     $cnx = connexionBdd();
@@ -614,7 +619,7 @@ function filmsByCategory($id) :mixed{
 
 
 }
-
+//--------------------------------------------------------
 
 function createTableOrders(){
 
@@ -634,6 +639,9 @@ createTableOrders();
 
 // foreignKey('orders', 'user_id', 'users', 'id_user');
 
+
+//----------------------------------------------------------------------
+
 function createTableOrderDetails(){
 
     $pdo = connexionBdd();
@@ -652,6 +660,10 @@ createTableOrderDetails();
 
 // foreignKey('order_details', ' order_id', 'orders', 'id_order');
 
+
+//---------------------------------------------------------------------
+
+
 function addOrder(int $user_id, float $price, string $created_at, string $is_paid) : bool{
 
     $cnx = connexionBdd();
@@ -669,6 +681,10 @@ function addOrder(int $user_id, float $price, string $created_at, string $is_pai
     }
 }
 
+
+
+//-------------------------------------------------------------------
+
 function lastId(): array{
     $pdo = connexionBdd();
     $sql = "SELECT MAX(id_order) AS lastId FROM orders";
@@ -677,6 +693,10 @@ function lastId(): array{
     return $result;
 
 }
+
+
+//----------------------------------------------------------------
+
 
 function addOrderDetails(int $orderId, int $filmId, float $filmPrice, int $quantity) :void{
 
